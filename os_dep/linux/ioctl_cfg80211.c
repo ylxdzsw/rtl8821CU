@@ -417,7 +417,7 @@ u8 rtw_cfg80211_ch_switch_notify(_adapter *adapter, u8 ch, u8 bw, u8 offset, u8 
 	if (ret != _SUCCESS)
 		goto exit;
 
-	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0);
+	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef);
 
 #else
 	int freq = rtw_ch2freq(ch);
@@ -4929,7 +4929,7 @@ static int cfg80211_rtw_change_beacon(struct wiphy *wiphy, struct net_device *nd
 	return ret;
 }
 
-static int cfg80211_rtw_stop_ap(struct wiphy *wiphy, struct net_device *ndev, unsigned int link_id)
+static int cfg80211_rtw_stop_ap(struct wiphy *wiphy, struct net_device *ndev)
 {
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(ndev);
 
